@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     color: white;
 
-    /* Переливающийся фон с кубиками */
+    /* Анимированные кубики фон */
     background: repeating-linear-gradient(
         45deg,
         #ffd700 0px,
@@ -28,29 +28,68 @@ body {
     100% { background-position: 0 0; }
 }
 
-h1 {
-    text-align: center;
-    font-size: 8vw;
-    color: #ff4747;
+/* Контейнер надписи и фото канала */
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
+/* Надпись НЕИСТОВ */
+h1 {
+    font-size: 8vw;
+    color: #ff4747;
+    margin: 0;
+    padding: 10px 20px;
+    border: 3px solid #ff4747; /* контур */
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* Контур с фото канала */
+.channel-photo, .reviews-photo {
+    width: 80px;
+    height: 80px;
+    border: 3px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Фото отзывов (коричневый контур) */
+.reviews-photo {
+    border-color: #8b4513; /* коричневый */
+}
+
+/* Фото внутри контуров */
+.channel-photo img, .reviews-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Сетка карточек */
 .grid {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
+    max-width: 1200px;
 }
 
+/* Карточка */
 .card {
     border-radius: 15px;
-    flex: 1 1 calc(33.33% - 20px);
+    flex: 1 1 calc(33.33% - 20px); 
     max-width: 220px;
     min-width: 140px;
     text-align: center;
     padding: 15px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    background: rgba(0,0,0,0.5); /* полупрозрачный фон */
 }
 
 .card img {
@@ -65,76 +104,88 @@ h1 {
     word-wrap: break-word;
 }
 
-/* Цвета фонов карточек */
-.card.weapon { background: #8a2be2; }
-.card.armor { background: #1e90ff; }
-.card.armor_accessories { background: #228b22; }
-.card.legendary_items { background: #ff8c00; }
-.card.extra_accessories { background: #8b0000; }
-.card.companions { background: #4b0082; }
-.card.balance_boost { background: #ffd700; }
-.card.warehouse { background: #696969; }
+/* Цвета карточек */
+.card.weapon { background: #8a2be2; }           
+.card.armor { background: #ff0000; }            
+.card.armor_accessories { background: #8a2be2; } 
+.card.legendary_items { background: #ff8c00; }   
+.card.extra_accessories { background: #8b0000; } 
+.card.companions { background: #4b0082; }       
+.card.balance_boost { background: #ffd700; }    
+.card.warehouse { background: #696969; }        
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
-@media (max-width: 900px) {
-    .card { flex: 1 1 calc(50% - 15px); }
-}
-
-@media (max-width: 600px) {
-    .card { flex: 1 1 100%; }
-    h1 { font-size: 12vw; }
-    .card span { font-size: 4vw; }
+/* Адаптив */
+@media (max-width: 900px) { .card { flex: 1 1 calc(50% - 15px); } }
+@media (max-width: 600px) { 
+    .card { flex: 1 1 100%; } 
+    h1 { font-size: 12vw; } 
+    .card span { font-size: 4vw; } 
+    .header-container { justify-content: center; }
 }
 </style>
 </head>
 <body>
 
-<h1>НЕИСТОВ</h1>
+<div class="content">
 
-<div class="grid">
-<div class="card weapon" onclick="window.location.href='weapon.html'">
-<img src="images/mk14.png" alt="Оружие МК14">
-<span>Оружие</span>
-</div>
+    <!-- Заголовок и фото -->
+    <div class="header-container">
+        <h1>НЕИСТОВ</h1>
+        <div class="channel-photo">
+            <img src="images/channel.png" alt="Фото канала">
+        </div>
+        <div class="reviews-photo">
+            <img src="images/reviews.png" alt="Отзывы канала">
+        </div>
+    </div>
 
-<div class="card armor" onclick="window.location.href='armor.html'">
-<img src="images/armor6.png" alt="Броня 6 уровня">
-<span>Броня</span>
-</div>
+    <!-- Сетка карточек -->
+    <div class="grid">
+        <div class="card weapon" onclick="window.location.href='weapon.html'">
+            <img src="images/mk14.png" alt="Оружие МК14">
+            <span>Оружие</span>
+        </div>
 
-<div class="card armor_accessories" onclick="window.location.href='armor_accessories.html'">
-<img src="images/arm_fabric.png" alt="Освинцованная ткань">
-<span>Аксесуары для брони</span>
-</div>
+        <div class="card armor" onclick="window.location.href='armor.html'">
+            <img src="images/armor6.png" alt="Броня 6 уровня">
+            <span>Броня</span>
+        </div>
 
-<div class="card legendary_items" onclick="window.location.href='legendary_items.html'">
-<img src="images/ice_arbiter.png" alt="Ледяной арбитр">
-<span>Предметы сказочного качества</span>
-</div>
+        <div class="card armor_accessories" onclick="window.location.href='armor_accessories.html'">
+            <img src="images/arm_fabric.png" alt="Освинцованная ткань">
+            <span>Аксессуары для брони</span>
+        </div>
 
-<div class="card extra_accessories" onclick="window.location.href='extra_accessories.html'">
-<img src="images/black_letter.png" alt="Письмо с поролем">
-<span>Дополнительные аксессуары</span>
-</div>
+        <div class="card legendary_items" onclick="window.location.href='legendary_items.html'">
+            <img src="images/ice_arbiter.png" alt="Ледяной арбитр">
+            <span>Предметы сказочного качества</span>
+        </div>
 
-<div class="card companions" onclick="window.location.href='companions.html'">
-<img src="images/3_characters.png" alt="3 персонажа в броне">
-<span>Сопровождение</span>
-</div>
+        <div class="card extra_accessories" onclick="window.location.href='extra_accessories.html'">
+            <img src="images/black_letter.png" alt="Письмо с поролем">
+            <span>Дополнительные аксессуары</span>
+        </div>
 
-<div class="card balance_boost" onclick="window.location.href='balance_boost.html'">
-<img src="images/metro_currency.png" alt="Внутриигровая валюта">
-<span>Буст баланса</span>
-</div>
+        <div class="card companions" onclick="window.location.href='companions.html'">
+            <img src="images/3_characters.png" alt="3 персонажа в броне">
+            <span>Сопровождение</span>
+        </div>
 
-<div class="card warehouse" onclick="window.location.href='warehouse.html'">
-<img src="images/warehouse.png" alt="Склад с ящиками">
-<span>Продажа вещей</span>
-</div>
+        <div class="card balance_boost" onclick="window.location.href='balance_boost.html'">
+            <img src="images/metro_currency.png" alt="Внутриигровая валюта">
+            <span>Буст баланса</span>
+        </div>
+
+        <div class="card warehouse" onclick="window.location.href='warehouse.html'">
+            <img src="images/warehouse.png" alt="Склад с ящиками">
+            <span>Продажа вещей</span>
+        </div>
+    </div>
 </div>
 
 </body>
