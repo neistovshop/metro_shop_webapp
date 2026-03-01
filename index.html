@@ -12,7 +12,6 @@ body {
     color: white;
 }
 
-/* Заголовок */
 h1 {
     text-align: center;
     font-size: 10vw;
@@ -20,7 +19,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Контейнер карточек */
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -28,9 +26,7 @@ h1 {
     justify-content: center;
 }
 
-/* Карточка */
 .card {
-    background: #1e1e1e;
     border-radius: 15px;
     width: 30%;
     min-width: 150px;
@@ -38,91 +34,82 @@ h1 {
     text-align: center;
     padding: 15px;
     cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    background: #2c2c2c;
-}
-
-/* Изображение карточки */
 .card img {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
-/* Название */
 .card span {
     font-size: 4vw;
     font-weight: bold;
 }
 
-/* Адаптив для телефонов */
+/* Цвета фонов для каждой карточки */
+.card.weapon { background: #8a2be2; }           /* фиолетовый */
+.card.armor { background: #1e90ff; }            /* синий */
+.card.armor_accessories { background: #228b22; } /* зелёный */
+.card.legendary_items { background: #ff8c00; }   /* оранжевый */
+.card.extra_accessories { background: #8b0000; } /* тёмно-красный */
+.card.companions { background: #4b0082; }        /* индиго */
+.card.balance_boost { background: #ffd700; }     /* золотой */
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
 @media (max-width: 600px) {
-    .card {
-        width: 45%;
-    }
-    h1 {
-        font-size: 15vw;
-    }
-    .card span {
-        font-size: 5vw;
-    }
+    .card { width: 45%; }
+    h1 { font-size: 15vw; }
+    .card span { font-size: 5vw; }
 }
 </style>
 </head>
-
 <body>
 
 <h1>НЕИСТОВ</h1>
 
 <div class="grid">
 
-    <!-- Оружие -->
-    <div class="card" onclick="window.location.href='weapon.html'">
-        <img src="https://i.imgur.com/MC14.png" alt="Оружие МК14">
-        <span>Оружие</span>
-    </div>
-
-    <!-- Броня -->
-    <div class="card" onclick="window.location.href='armor.html'">
-        <img src="https://i.imgur.com/Armor6.png" alt="Броня 6 уровня">
-        <span>Броня</span>
-    </div>
-
-    <!-- Аксессуары для брони -->
-    <div class="card" onclick="window.location.href='armor_accessories.html'">
-        <img src="https://i.imgur.com/ArmFabric.png" alt="Освинцованная ткань">
-        <span>Аксесуары для брони</span>
-    </div>
-
-    <!-- Предметы сказочного качества -->
-    <div class="card" onclick="window.location.href='legendary_items.html'">
-        <img src="https://i.imgur.com/IceArbiter.png" alt="Ледяной арбитр">
-        <span>Предметы сказочного качества</span>
-    </div>
-
-    <!-- Дополнительные аксессуары -->
-    <div class="card" onclick="window.location.href='extra_accessories.html'">
-        <img src="https://i.imgur.com/BlackLetter.png" alt="Письмо с поролем черное">
-        <span>Дополнительные аксессуары</span>
-    </div>
-
-    <!-- Сопровождение -->
-    <div class="card" onclick="window.location.href='companions.html'">
-        <img src="https://i.imgur.com/3Characters.png" alt="3 персонажа в броне 6 уровня">
-        <span>Сопровождение</span>
-    </div>
-
-    <!-- Буст баланса -->
-    <div class="card" onclick="window.location.href='balance_boost.html'">
-        <img src="https://i.imgur.com/MetroCurrency.png" alt="Внутриигровая валюта">
-        <span>Буст баланса</span>
-    </div>
-
+<div class="card weapon" onclick="window.location.href='weapon.html'">
+<img src="images/mk14.png" alt="Оружие МК14">
+<span>Оружие</span>
 </div>
 
+<div class="card armor" onclick="window.location.href='armor.html'">
+<img src="images/armor6.png" alt="Броня 6 уровня">
+<span>Броня</span>
+</div>
+
+<div class="card armor_accessories" onclick="window.location.href='armor_accessories.html'">
+<img src="images/arm_fabric.png" alt="Освинцованная ткань">
+<span>Аксесуары для брони</span>
+</div>
+
+<div class="card legendary_items" onclick="window.location.href='legendary_items.html'">
+<img src="images/ice_arbiter.png" alt="Ледяной арбитр">
+<span>Предметы сказочного качества</span>
+</div>
+
+<div class="card extra_accessories" onclick="window.location.href='extra_accessories.html'">
+<img src="images/black_letter.png" alt="Письмо с поролем">
+<span>Дополнительные аксессуары</span>
+</div>
+
+<div class="card companions" onclick="window.location.href='companions.html'">
+<img src="images/3_characters.png" alt="3 персонажа в броне">
+<span>Сопровождение</span>
+</div>
+
+<div class="card balance_boost" onclick="window.location.href='balance_boost.html'">
+<img src="images/metro_currency.png" alt="Внутриигровая валюта">
+<span>Буст баланса</span>
+</div>
+
+</div>
 </body>
 </html>
