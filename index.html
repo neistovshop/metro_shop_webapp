@@ -28,13 +28,39 @@ body {
     100% { background-position: 0 0; }
 }
 
-/* Контейнер надписи и фото канала */
+/* Контейнер надписи и фото канала/отзывов */
 .header-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     margin-bottom: 30px;
-    flex-wrap: wrap;
+}
+
+/* Фото отзывов слева */
+.reviews-photo {
+    width: 8vw;
+    height: 8vw;
+    border: 3px solid #8b4513; /* коричневый контур */
+    border-radius: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.channel-photo {
+    width: 8vw;
+    height: 8vw;
+    border: 3px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Фото внутри контуров */
+.channel-photo img, .reviews-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Надпись НЕИСТОВ */
@@ -43,31 +69,9 @@ h1 {
     color: #ff4747;
     margin: 0;
     padding: 10px 20px;
-    border: 3px solid #ff4747; /* контур */
+    border: 3px solid #ff4747;
     border-radius: 15px;
-    display: inline-block;
-}
-
-/* Контур с фото канала */
-.channel-photo, .reviews-photo {
-    width: 80px;
-    height: 80px;
-    border: 3px solid white;
-    border-radius: 15px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-/* Фото отзывов (коричневый контур) */
-.reviews-photo {
-    border-color: #8b4513; /* коричневый */
-}
-
-/* Фото внутри контуров */
-.channel-photo img, .reviews-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    text-align: center;
 }
 
 /* Сетка карточек */
@@ -89,7 +93,7 @@ h1 {
     padding: 15px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    background: rgba(0,0,0,0.5); /* полупрозрачный фон */
+    background: rgba(0,0,0,0.5);
 }
 
 .card img {
@@ -125,22 +129,26 @@ h1 {
     .card { flex: 1 1 100%; } 
     h1 { font-size: 12vw; } 
     .card span { font-size: 4vw; } 
-    .header-container { justify-content: center; }
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 </style>
 </head>
 <body>
 
 <div class="content">
-
     <!-- Заголовок и фото -->
     <div class="header-container">
-        <h1>НЕИСТОВ</h1>
-        <div class="channel-photo">
-            <img src="images/channel.png" alt="Фото канала">
-        </div>
         <div class="reviews-photo">
             <img src="images/reviews.png" alt="Отзывы канала">
+        </div>
+
+        <h1>НЕИСТОВ</h1>
+
+        <div class="channel-photo">
+            <img src="images/channel.png" alt="Фото канала">
         </div>
     </div>
 
