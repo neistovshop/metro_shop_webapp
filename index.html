@@ -17,35 +17,49 @@ body {
 }
 
 /* Заголовок Неистов */
+.header-container {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:20px;
+    gap:20px;
+}
+
 .header {
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
+    font-size:50px;
+    font-weight:bold;
     color: #0f0cff;
     text-shadow:
         0 0 5px #0f0cff,
         0 0 10px #ff00ff,
         0 0 20px #ff0000;
-    margin: 30px 0;
+}
+
+/* Фото канала и отзывов */
+.header-img {
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
 }
 
 /* Контейнер карточек */
 .cards-container {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 1cm; /* отступ между карточками */
+    justify-content: center;
+    gap: 0.5cm; /* отступ между карточками */
     padding: 20px;
 }
 
 /* Карточки */
 .card {
     background: rgba(0,0,0,0.6);
-    border-radius: 12px;
-    width: calc(30% - 0.66cm); /* три в ряд с отступом */
-    text-align: center;
-    padding: 20px;
-    cursor: pointer;
+    border-radius:12px;
+    width: calc(30% - 0.33cm); /* три в ряд с отступом 0.5 см */
+    text-align:center;
+    padding:20px;
+    cursor:pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -54,23 +68,33 @@ body {
     box-shadow: 0 0 15px rgba(255,255,255,0.5);
 }
 
-/* Фото внутри карточки */
 .card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width:100%;
+    border-radius:8px;
+    margin-bottom:10px;
 }
 
-/* Название карточки */
 .card-title {
-    font-size: 20px;
-    font-weight: bold;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Нижняя надпись */
+.footer {
+    text-align:center;
+    margin:20px 0;
+    font-family:'Brush Script MT', cursive;
+    font-size:18px;
 }
 </style>
 </head>
 <body>
 
-<div class="header">Неистов</div>
+<div class="header-container">
+    <img src="images/channel.jpg" alt="Канал" class="header-img">
+    <div class="header">Неистов</div>
+    <img src="images/reviews.jpg" alt="Отзывы" class="header-img">
+</div>
 
 <div class="cards-container">
     <div class="card" onclick="window.location.href='weapon.html'">
@@ -83,9 +107,27 @@ body {
     </div>
     <div class="card" onclick="window.location.href='accessory.html'">
         <img src="images/ice_arbitr.jpg" alt="Аксессуары">
-        <div class="card-title">Аксессуары</div>
+        <div class="card-title">Аксессуары для брони</div>
+    </div>
+    <div class="card" onclick="window.location.href='fantasy.html'">
+        <img src="images/fantasy_item.jpg" alt="Сказочные предметы">
+        <div class="card-title">Предметы сказочного качества</div>
+    </div>
+    <div class="card" onclick="window.location.href='extra.html'">
+        <img src="images/letter.jpg" alt="Доп.аксессуары">
+        <div class="card-title">Дополнительные аксессуары</div>
+    </div>
+    <div class="card" onclick="window.location.href='support.html'">
+        <img src="images/3_characters.jpg" alt="Сопровождение">
+        <div class="card-title">Сопровождение</div>
+    </div>
+    <div class="card" onclick="window.location.href='balance.html'">
+        <img src="images/currency.jpg" alt="Буст баланса">
+        <div class="card-title">Буст баланса</div>
     </div>
 </div>
+
+<div class="footer">© 2026. Все права принадлежат автору.</div>
 
 </body>
 </html>
