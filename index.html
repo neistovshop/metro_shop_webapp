@@ -17,6 +17,7 @@ body {
 h1 {
     text-align: center;
     color: #ff4747;
+    margin-bottom: 20px;
 }
 
 .shop {
@@ -30,17 +31,33 @@ h1 {
     padding: 15px;
     border-radius: 12px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 15px;
+}
+
+.item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info span {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .item button {
     background: #ff4747;
     border: none;
-    padding: 8px 15px;
+    padding: 12px 20px;
     color: white;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .cart {
@@ -58,7 +75,7 @@ h1 {
 .checkout {
     margin-top: 10px;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: #00c853;
     border: none;
     color: white;
@@ -75,17 +92,20 @@ h1 {
 
 <div class="shop">
     <div class="item">
-        <span>🔫 Оружие — 50₽</span>
+        <img src="https://i.imgur.com/5cFj5gN.png" alt="Оружие">
+        <div class="item-info"><span>🔫 Оружие — 50₽</span></div>
         <button onclick="addToCart('Оружие', 50)">Добавить</button>
     </div>
 
     <div class="item">
-        <span>🛡 Броня — 30₽</span>
+        <img src="https://i.imgur.com/O5rkD3F.png" alt="Броня">
+        <div class="item-info"><span>🛡 Броня — 30₽</span></div>
         <button onclick="addToCart('Броня', 30)">Добавить</button>
     </div>
 
     <div class="item">
-        <span>🎒 Рюкзак — 25₽</span>
+        <img src="https://i.imgur.com/jwXb2uB.png" alt="Рюкзак">
+        <div class="item-info"><span>🎒 Рюкзак — 25₽</span></div>
         <button onclick="addToCart('Рюкзак', 25)">Добавить</button>
     </div>
 </div>
