@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(270deg, #ff0000, #ffaa00, #ff0000);
+    background: linear-gradient(270deg, #111, #550000, #111);
     background-size: 400% 400%;
     animation: bg 10s infinite alternate;
     color: white;
@@ -19,86 +19,245 @@ body {
     100% { background-position: 100% 50%; }
 }
 
-/* Контейнер кнопок */
-.weapon-menu {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: flex;
-    gap: 10px;
+.container {
+    padding: 20px;
 }
 
-/* Маленькие квадраты */
-.weapon-btn {
-    width: 60px;
-    height: 60px;
-    background: black;
-    border: 2px solid gold;
+.category {
+    background: #aa0000;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px red;
+}
+
+.category h2 {
+    margin-top: 0;
+}
+
+.weapon-item {
+    background: #111;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+}
+
+.price-btn {
+    background: gold;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.3s;
 }
 
-.weapon-btn:hover {
-    background: red;
+.price-btn:hover {
+    background: lime;
 }
 
-/* Блок списка */
-.weapon-list {
-    position: absolute;
-    top: 100px;
-    left: 20px;
-    background: rgba(0,0,0,0.8);
+.active {
+    background: green !important;
+}
+
+/* Корзина */
+.cart {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
     padding: 15px;
-    border: 2px solid gold;
-    display: none;
-    width: 200px;
+    border-top: 3px solid gold;
+}
+
+.cart h3 {
+    margin: 0 0 10px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.remove-btn {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="weapon-menu">
-    <div class="weapon-btn" onclick="showList('shv')">ШВ</div>
-    <div class="weapon-btn" onclick="showList('sv')">СВ</div>
-    <div class="weapon-btn" onclick="showList('pp')">ПП</div>
+<div class="container">
+
+<!-- ШВ -->
+<div class="category">
+<h2>ШВ</h2>
+
+<div class="weapon-item">
+<span>M416 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('M416', 35, this)">35 ₽</div>
 </div>
 
-<div id="weaponList" class="weapon-list"></div>
+<div class="weapon-item">
+<span>SCAR-L (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('SCAR-L', 35, this)">35 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>AKM (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('AKM', 35, this)">35 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>Гроза (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('Гроза', 35, this)">35 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>AUG (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('AUG', 35, this)">35 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>M762 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('M762', 35, this)">35 ₽</div>
+</div>
+</div>
+
+<!-- СВ -->
+<div class="category">
+<h2>СВ</h2>
+
+<div class="weapon-item">
+<span>AWM (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('AWM', 99.99, this)">99.99 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>AMR (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('AMR', 89.90, this)">89.90 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>M24 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('M24', 30, this)">30 ₽</div>
+</div>
+</div>
+
+<!-- МВ -->
+<div class="category">
+<h2>МВ</h2>
+
+<div class="weapon-item">
+<span>Mk14 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('Mk14', 65.90, this)">65.90 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>SLR (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('SLR', 20, this)">20 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>SKS (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('SKS', 25, this)">25 ₽</div>
+</div>
+</div>
+
+<!-- ДК -->
+<div class="category">
+<h2>ДК</h2>
+
+<div class="weapon-item">
+<span>S12K (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('S12K', 15, this)">15 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>DBS (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('DBS', 19.90, this)">19.90 ₽</div>
+</div>
+</div>
+
+<!-- РП -->
+<div class="category">
+<h2>РП</h2>
+
+<div class="weapon-item">
+<span>MG3 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('MG3', 55, this)">55 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>M249 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('M249', 60, this)">60 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>M134 (unknown quality)</span>
+<div class="price-btn" onclick="addToCart('M134', 120, this)">120 ₽</div>
+</div>
+</div>
+
+<!-- ПП -->
+<div class="category">
+<h2>ПП</h2>
+
+<div class="weapon-item">
+<span>UZI (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('UZI', 19.90, this)">19.90 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>JS9 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('JS9', 45, this)">45 ₽</div>
+</div>
+
+<div class="weapon-item">
+<span>P90 (высшего качества)</span>
+<div class="price-btn" onclick="addToCart('P90', 75, this)">75 ₽</div>
+</div>
+</div>
+
+</div>
+
+<!-- Корзина -->
+<div class="cart">
+<h3>🛒 Корзина</h3>
+<div id="cartItems"></div>
+<strong>Итого: <span id="total">0</span> ₽</strong>
+</div>
 
 <script>
-function showList(type) {
-    const list = document.getElementById("weaponList");
+let total = 0;
 
-    if(type === "shv") {
-        list.innerHTML = `
-            <div>АК-47</div>
-            <div>M4A1</div>
-            <div>SCAR-L</div>
-        `;
-    }
+function addToCart(name, price, button) {
+    button.classList.add("active");
 
-    if(type === "sv") {
-        list.innerHTML = `
-            <div>AWM</div>
-            <div>MK14</div>
-            <div>Kar98k</div>
-        `;
-    }
+    const cart = document.getElementById("cartItems");
+    const item = document.createElement("div");
+    item.className = "cart-item";
+    item.innerHTML = `
+        <span>${name} - ${price} ₽</span>
+        <button class="remove-btn" onclick="removeItem(this, ${price})">X</button>
+    `;
+    cart.appendChild(item);
 
-    if(type === "pp") {
-        list.innerHTML = `
-            <div>UMP45</div>
-            <div>Vector</div>
-            <div>MP5</div>
-        `;
-    }
+    total += price;
+    document.getElementById("total").innerText = total.toFixed(2);
+}
 
-    list.style.display = "block";
+function removeItem(btn, price) {
+    btn.parentElement.remove();
+    total -= price;
+    document.getElementById("total").innerText = total.toFixed(2);
 }
 </script>
 
