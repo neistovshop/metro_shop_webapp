@@ -10,24 +10,16 @@ body {
     font-family: Arial, sans-serif;
     color: white;
 
-    /* Анимированный фон серо-буро-малиновый */
-    background: repeating-linear-gradient(
-        45deg,
-        #708090 0px,       /* серый */
-        #708090 20px,
-        #8b4513 20px,      /* бурый */
-        #8b4513 40px,
-        #c71585 40px,      /* малиновый */
-        #c71585 60px
-    );
-    background-size: 300% 300%;
-    animation: moveBG 10s linear infinite;
+    /* Анимированный переливающийся фон красный -> желтый */
+    background: linear-gradient(270deg, #ff0000, #ffd700, #ff0000);
+    background-size: 600% 600%;
+    animation: gradientBG 10s ease infinite;
 }
 
-@keyframes moveBG {
-    0% { background-position: 0 0; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0 0; }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Контейнер надписи и фото канала/отзывов */
@@ -97,7 +89,7 @@ h1 {
     padding: 15px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    background: rgba(0,0,0,0.5);
+    background: #ff0000; /* красный фон для всех карточек */
 }
 
 .card img {
@@ -112,17 +104,8 @@ h1 {
     font-size: 2.5vw;
     font-weight: bold;
     word-wrap: break-word;
+    color: white;
 }
-
-/* Цвета карточек */
-.card.weapon { background: #8a2be2; }           
-.card.armor { background: #ff0000; }            
-.card.armor_accessories { background: #8a2be2; } 
-.card.legendary_items { background: #ff8c00; }   
-.card.extra_accessories { background: #8b0000; } 
-.card.companions { background: #4b0082; }       
-.card.balance_boost { background: #ffd700; }    
-.card.warehouse { background: #696969; }        
 
 .card:hover {
     transform: scale(1.05);
@@ -160,42 +143,42 @@ h1 {
 
     <!-- Сетка карточек -->
     <div class="grid">
-        <div class="card weapon" onclick="window.location.href='weapon.html'">
+        <div class="card" onclick="window.location.href='weapon.html'">
             <img src="images/mk14.png" alt="Оружие МК14">
             <span>Оружие</span>
         </div>
 
-        <div class="card armor" onclick="window.location.href='armor.html'">
+        <div class="card" onclick="window.location.href='armor.html'">
             <img src="images/armor6.png" alt="Броня 6 уровня">
             <span>Броня</span>
         </div>
 
-        <div class="card armor_accessories" onclick="window.location.href='armor_accessories.html'">
+        <div class="card" onclick="window.location.href='armor_accessories.html'">
             <img src="images/arm_fabric.png" alt="Освинцованная ткань">
             <span>Аксессуары для брони</span>
         </div>
 
-        <div class="card legendary_items" onclick="window.location.href='legendary_items.html'">
+        <div class="card" onclick="window.location.href='legendary_items.html'">
             <img src="images/ice_arbiter.png" alt="Ледяной арбитр">
             <span>Предметы сказочного качества</span>
         </div>
 
-        <div class="card extra_accessories" onclick="window.location.href='extra_accessories.html'">
+        <div class="card" onclick="window.location.href='extra_accessories.html'">
             <img src="images/black_letter.png" alt="Письмо с поролем">
             <span>Дополнительные аксессуары</span>
         </div>
 
-        <div class="card companions" onclick="window.location.href='companions.html'">
+        <div class="card" onclick="window.location.href='companions.html'">
             <img src="images/3_characters.png" alt="3 персонажа в броне">
             <span>Сопровождение</span>
         </div>
 
-        <div class="card balance_boost" onclick="window.location.href='balance_boost.html'">
+        <div class="card" onclick="window.location.href='balance_boost.html'">
             <img src="images/metro_currency.png" alt="Внутриигровая валюта">
             <span>Буст баланса</span>
         </div>
 
-        <div class="card warehouse" onclick="window.location.href='warehouse.html'">
+        <div class="card" onclick="window.location.href='warehouse.html'">
             <img src="images/warehouse.png" alt="Склад с ящиками">
             <span>Продажа вещей</span>
         </div>
@@ -204,4 +187,5 @@ h1 {
 
 </body>
 </html>
+
 
