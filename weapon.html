@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Оружие</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(270deg, #ff0000, #ffaa00, #ff0000);
+    background-size: 400% 400%;
+    animation: bg 10s infinite alternate;
+    color: white;
+}
+
+@keyframes bg {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Контейнер кнопок */
+.weapon-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Маленькие квадраты */
+.weapon-btn {
+    width: 60px;
+    height: 60px;
+    background: black;
+    border: 2px solid gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.weapon-btn:hover {
+    background: red;
+}
+
+/* Блок списка */
+.weapon-list {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    background: rgba(0,0,0,0.8);
+    padding: 15px;
+    border: 2px solid gold;
+    display: none;
+    width: 200px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="weapon-menu">
+    <div class="weapon-btn" onclick="showList('shv')">ШВ</div>
+    <div class="weapon-btn" onclick="showList('sv')">СВ</div>
+    <div class="weapon-btn" onclick="showList('pp')">ПП</div>
+</div>
+
+<div id="weaponList" class="weapon-list"></div>
+
+<script>
+function showList(type) {
+    const list = document.getElementById("weaponList");
+
+    if(type === "shv") {
+        list.innerHTML = `
+            <div>АК-47</div>
+            <div>M4A1</div>
+            <div>SCAR-L</div>
+        `;
+    }
+
+    if(type === "sv") {
+        list.innerHTML = `
+            <div>AWM</div>
+            <div>MK14</div>
+            <div>Kar98k</div>
+        `;
+    }
+
+    if(type === "pp") {
+        list.innerHTML = `
+            <div>UMP45</div>
+            <div>Vector</div>
+            <div>MP5</div>
+        `;
+    }
+
+    list.style.display = "block";
+}
+</script>
+
+</body>
+</html>
