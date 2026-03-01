@@ -2,122 +2,73 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>🔥 METRO SHOP 🔥</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
+<title>НЕИСТОВ</title>
 <style>
 body {
+    margin: 0;
+    padding: 20px;
     font-family: Arial, sans-serif;
     background: #121212;
     color: white;
-    margin: 0;
-    padding: 15px;
 }
 
+/* Заголовок */
 h1 {
     text-align: center;
+    font-size: 10vw;
     color: #ff4747;
-    margin-bottom: 20px;
-    font-size: 8vw; /* заголовок крупный на телефоне */
+    margin-bottom: 30px;
 }
 
-/* Контейнер магазина */
-.shop {
+/* Контейнер карточек */
+.grid {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Карточка товара */
-.item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: #1e1e1e;
-    border-radius: 15px;
-    padding: 20px;
     flex-wrap: wrap;
-    transition: transform 0.2s;
-}
-.item:hover {
-    transform: scale(1.03);
+    gap: 15px;
+    justify-content: center;
 }
 
-/* Изображение товара */
-.item img {
-    width: 35vw; /* почти треть ширины экрана */
-    max-width: 150px; /* но не больше 150px */
-    height: auto;
-    border-radius: 15px;
-}
-
-/* Информация о товаре */
-.item-info {
-    flex: 1;
-    min-width: 140px;
-}
-
-.item-info span {
-    font-size: 5vw; /* крупный текст */
-    min-font-size: 18px;
-}
-
-/* Кнопка добавить */
-.item button {
-    background: #ff4747;
-    border: none;
-    padding: 5vw 6vw; /* крупная кнопка под палец */
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 5vw;
-    min-font-size: 16px;
-    transition: background 0.2s;
-}
-.item button:hover {
-    background: #ff1f1f;
-}
-
-/* Корзина */
-.cart {
-    margin-top: 30px;
-    padding: 20px;
+/* Карточка */
+.card {
     background: #1e1e1e;
     border-radius: 15px;
-}
-
-.total {
-    margin-top: 15px;
-    font-size: 6vw;
-    min-font-size: 18px;
-}
-
-.checkout {
-    margin-top: 15px;
-    width: 100%;
-    padding: 5vw;
-    background: #00c853;
-    border: none;
-    color: white;
-    border-radius: 10px;
-    font-size: 6vw;
-    min-font-size: 18px;
+    width: 30%;
+    min-width: 150px;
+    max-width: 200px;
+    text-align: center;
+    padding: 15px;
     cursor: pointer;
-    transition: background 0.2s;
-}
-.checkout:hover {
-    background: #009624;
+    transition: transform 0.2s, background 0.2s;
 }
 
-/* Адаптив для маленьких экранов */
-@media (max-width: 500px) {
-    .item {
-        flex-direction: column;
-        align-items: flex-start;
+.card:hover {
+    transform: scale(1.05);
+    background: #2c2c2c;
+}
+
+/* Изображение карточки */
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Название */
+.card span {
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 600px) {
+    .card {
+        width: 45%;
     }
-    .item button {
-        width: 100%;
-        text-align: center;
+    h1 {
+        font-size: 15vw;
+    }
+    .card span {
+        font-size: 5vw;
     }
 }
 </style>
@@ -125,74 +76,53 @@ h1 {
 
 <body>
 
-<h1>🔥 METRO SHOP 🔥</h1>
+<h1>НЕИСТОВ</h1>
 
-<div class="shop">
-    <div class="item">
-        <img src="https://i.imgur.com/5cFj5gN.png" alt="Оружие">
-        <div class="item-info"><span>🔫 Оружие — 50₽</span></div>
-        <button onclick="addToCart('Оружие', 50)">Добавить</button>
+<div class="grid">
+
+    <!-- Оружие -->
+    <div class="card" onclick="window.location.href='weapon.html'">
+        <img src="https://i.imgur.com/MC14.png" alt="Оружие МК14">
+        <span>Оружие</span>
     </div>
 
-    <div class="item">
-        <img src="https://i.imgur.com/O5rkD3F.png" alt="Броня">
-        <div class="item-info"><span>🛡 Броня — 30₽</span></div>
-        <button onclick="addToCart('Броня', 30)">Добавить</button>
+    <!-- Броня -->
+    <div class="card" onclick="window.location.href='armor.html'">
+        <img src="https://i.imgur.com/Armor6.png" alt="Броня 6 уровня">
+        <span>Броня</span>
     </div>
 
-    <div class="item">
-        <img src="https://i.imgur.com/jwXb2uB.png" alt="Рюкзак">
-        <div class="item-info"><span>🎒 Рюкзак — 25₽</span></div>
-        <button onclick="addToCart('Рюкзак', 25)">Добавить</button>
+    <!-- Аксессуары для брони -->
+    <div class="card" onclick="window.location.href='armor_accessories.html'">
+        <img src="https://i.imgur.com/ArmFabric.png" alt="Освинцованная ткань">
+        <span>Аксесуары для брони</span>
     </div>
+
+    <!-- Предметы сказочного качества -->
+    <div class="card" onclick="window.location.href='legendary_items.html'">
+        <img src="https://i.imgur.com/IceArbiter.png" alt="Ледяной арбитр">
+        <span>Предметы сказочного качества</span>
+    </div>
+
+    <!-- Дополнительные аксессуары -->
+    <div class="card" onclick="window.location.href='extra_accessories.html'">
+        <img src="https://i.imgur.com/BlackLetter.png" alt="Письмо с поролем черное">
+        <span>Дополнительные аксессуары</span>
+    </div>
+
+    <!-- Сопровождение -->
+    <div class="card" onclick="window.location.href='companions.html'">
+        <img src="https://i.imgur.com/3Characters.png" alt="3 персонажа в броне 6 уровня">
+        <span>Сопровождение</span>
+    </div>
+
+    <!-- Буст баланса -->
+    <div class="card" onclick="window.location.href='balance_boost.html'">
+        <img src="https://i.imgur.com/MetroCurrency.png" alt="Внутриигровая валюта">
+        <span>Буст баланса</span>
+    </div>
+
 </div>
-
-<div class="cart">
-    <h3>🛒 Корзина</h3>
-    <div id="cart-items"></div>
-    <div class="total">Итого: <span id="total">0</span>₽</div>
-    <button class="checkout" onclick="checkout()">Оформить заказ</button>
-</div>
-
-<script>
-const tg = window.Telegram.WebApp;
-tg.expand();
-
-let cart = [];
-let total = 0;
-
-function addToCart(item, price) {
-    cart.push({item, price});
-    total += price;
-    updateCart();
-}
-
-function updateCart() {
-    const cartDiv = document.getElementById("cart-items");
-    cartDiv.innerHTML = "";
-    cart.forEach(product => {
-        cartDiv.innerHTML += `<div>${product.item} - ${product.price}₽</div>`;
-    });
-    document.getElementById("total").innerText = total;
-}
-
-function checkout() {
-    if(cart.length === 0) {
-        alert("Корзина пустая!");
-        return;
-    }
-
-    let orderText = "🛒 Новый заказ:\n";
-    cart.forEach(product => {
-        orderText += product.item + " - " + product.price + "₽\n";
-    });
-    orderText += "\nИтого: " + total + "₽";
-
-    tg.sendData(orderText);
-    alert("✅ Заказ отправлен!");
-}
-</script>
 
 </body>
 </html>
-
