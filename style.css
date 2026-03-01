@@ -21,3 +21,11 @@ body {
     50% { background-position: 100% 100%; }
     100% { background-position: 0 0; }
 }
+.card.weapon { background: #8a2be2; }           /* оставляем фиолетовый */
+.card.armor { background: #ff0000; }            /* красный вместо синего */
+.card.armor_accessories { background: #8a2be2; } /* фиолетовый вместо зелёного */
+.card.legendary_items { background: #ff8c00; }
+.card.extra_accessories { background: #8b0000; }
+.card.companions { background: #4b0082; }
+.card.balance_boost { background: #ffd700; }
+.card.warehouse { background: #696969; }
