@@ -61,6 +61,18 @@ body{
     font-size:14px;
 }
 
+.weapon-item img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:6px;
+    margin-right:10px;
+}
+
+.weapon-info{
+    flex:1;
+}
+
 .price-btn{
     background:gold;
     color:black;
@@ -136,7 +148,7 @@ body{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    background:rgba(0,255,0,0.2);
+    background:rgba(0,255,0,0.3);
     padding:20px 40px;
     font-size:22px;
     border-radius:15px;
@@ -149,51 +161,51 @@ body{
 
 <div class="back" onclick="goBack()">НАЗАД</div>
 
-<!-- СТРАНИЦА ОРУЖИЯ -->
 <div id="weaponPage" class="container">
 
+<!-- Функция: toggleBox будет автоматически закрывать другие -->
 <div class="category" onclick="toggleBox('shv')">ШВ</div>
 <div id="shv" class="weapon-box">
-<div class="weapon-item">M416 <div class="price-btn" onclick="add('M416',35,this)">35₽</div></div>
-<div class="weapon-item">SCAR-L <div class="price-btn" onclick="add('SCAR-L',35,this)">35₽</div></div>
-<div class="weapon-item">AKM <div class="price-btn" onclick="add('AKM',35,this)">35₽</div></div>
-<div class="weapon-item">Гроза <div class="price-btn" onclick="add('Гроза',35,this)">35₽</div></div>
-<div class="weapon-item">AUG <div class="price-btn" onclick="add('AUG',35,this)">35₽</div></div>
-<div class="weapon-item">M762 <div class="price-btn" onclick="add('M762',35,this)">35₽</div></div>
+    <div class="weapon-item"><img src="images/m416.jpg"><div class="weapon-info">M416 (высшего качества)</div><div class="price-btn" onclick="add('M416',35,this)">35₽</div></div>
+    <div class="weapon-item"><img src="images/scar-l.jpg"><div class="weapon-info">SCAR-L (высшего качества)</div><div class="price-btn" onclick="add('SCAR-L',35,this)">35₽</div></div>
+    <div class="weapon-item"><img src="images/akm.jpg"><div class="weapon-info">AKM (высшего качества)</div><div class="price-btn" onclick="add('AKM',35,this)">35₽</div></div>
+    <div class="weapon-item"><img src="images/groza.jpg"><div class="weapon-info">Гроза (высшего качества)</div><div class="price-btn" onclick="add('Гроза',35,this)">35₽</div></div>
+    <div class="weapon-item"><img src="images/aug.jpg"><div class="weapon-info">AUG (высшего качества)</div><div class="price-btn" onclick="add('AUG',35,this)">35₽</div></div>
+    <div class="weapon-item"><img src="images/m762.jpg"><div class="weapon-info">M762 (высшего качества)</div><div class="price-btn" onclick="add('M762',35,this)">35₽</div></div>
 </div>
 
 <div class="category" onclick="toggleBox('sv')">СВ</div>
 <div id="sv" class="weapon-box">
-<div class="weapon-item">AWM <div class="price-btn" onclick="add('AWM',99.99,this)">99.99₽</div></div>
-<div class="weapon-item">AMR <div class="price-btn" onclick="add('AMR',89.90,this)">89.90₽</div></div>
-<div class="weapon-item">M24 <div class="price-btn" onclick="add('M24',30,this)">30₽</div></div>
+    <div class="weapon-item"><img src="images/awm.jpg"><div class="weapon-info">AWM (высшего качества)</div><div class="price-btn" onclick="add('AWM',99.99,this)">99.99₽</div></div>
+    <div class="weapon-item"><img src="images/amr.jpg"><div class="weapon-info">AMR (высшего качества)</div><div class="price-btn" onclick="add('AMR',89.90,this)">89.90₽</div></div>
+    <div class="weapon-item"><img src="images/m24.jpg"><div class="weapon-info">M24 (высшего качества)</div><div class="price-btn" onclick="add('M24',30,this)">30₽</div></div>
 </div>
 
 <div class="category" onclick="toggleBox('mv')">МВ</div>
 <div id="mv" class="weapon-box">
-<div class="weapon-item">Mk-14 <div class="price-btn" onclick="add('Mk-14',65.90,this)">65.90₽</div></div>
-<div class="weapon-item">SLR <div class="price-btn" onclick="add('SLR',20,this)">20₽</div></div>
-<div class="weapon-item">SKS <div class="price-btn" onclick="add('SKS',25,this)">25₽</div></div>
+    <div class="weapon-item"><img src="images/mk14.jpg"><div class="weapon-info">Mk-14 (высшего качества)</div><div class="price-btn" onclick="add('Mk-14',65.90,this)">65.90₽</div></div>
+    <div class="weapon-item"><img src="images/slr.jpg"><div class="weapon-info">SLR (высшего качества)</div><div class="price-btn" onclick="add('SLR',20,this)">20₽</div></div>
+    <div class="weapon-item"><img src="images/sks.jpg"><div class="weapon-info">SKS (высшего качества)</div><div class="price-btn" onclick="add('SKS',25,this)">25₽</div></div>
 </div>
 
 <div class="category" onclick="toggleBox('dk')">ДК</div>
 <div id="dk" class="weapon-box">
-<div class="weapon-item">S12K <div class="price-btn" onclick="add('S12K',15,this)">15₽</div></div>
-<div class="weapon-item">DBS <div class="price-btn" onclick="add('DBS',19.90,this)">19.90₽</div></div>
+    <div class="weapon-item"><img src="images/s12k.jpg"><div class="weapon-info">S12K (высшего качества)</div><div class="price-btn" onclick="add('S12K',15,this)">15₽</div></div>
+    <div class="weapon-item"><img src="images/dbs.jpg"><div class="weapon-info">DBS (высшего качества)</div><div class="price-btn" onclick="add('DBS',19.90,this)">19.90₽</div></div>
 </div>
 
 <div class="category" onclick="toggleBox('rp')">РП</div>
 <div id="rp" class="weapon-box">
-<div class="weapon-item">MG3 <div class="price-btn" onclick="add('MG3',55,this)">55₽</div></div>
-<div class="weapon-item">M249 <div class="price-btn" onclick="add('M249',60,this)">60₽</div></div>
-<div class="weapon-item">M134 <div class="price-btn" onclick="add('M134',120,this)">120₽</div></div>
+    <div class="weapon-item"><img src="images/mg3.jpg"><div class="weapon-info">MG3 (высшего качества)</div><div class="price-btn" onclick="add('MG3',55,this)">55₽</div></div>
+    <div class="weapon-item"><img src="images/m249.jpg"><div class="weapon-info">M249 (высшего качества)</div><div class="price-btn" onclick="add('M249',60,this)">60₽</div></div>
+    <div class="weapon-item"><img src="images/m134.jpg"><div class="weapon-info">M134 (unknown quality)</div><div class="price-btn" onclick="add('M134',120,this)">120₽</div></div>
 </div>
 
 <div class="category" onclick="toggleBox('pp')">ПП</div>
 <div id="pp" class="weapon-box">
-<div class="weapon-item">UZI <div class="price-btn" onclick="add('UZI',19.90,this)">19.90₽</div></div>
-<div class="weapon-item">JS9 <div class="price-btn" onclick="add('JS9',45,this)">45₽</div></div>
-<div class="weapon-item">P90 <div class="price-btn" onclick="add('P90',75,this)">75₽</div></div>
+    <div class="weapon-item"><img src="images/uzi.jpg"><div class="weapon-info">UZI (высшего качества)</div><div class="price-btn" onclick="add('UZI',19.90,this)">19.90₽</div></div>
+    <div class="weapon-item"><img src="images/js9.jpg"><div class="weapon-info">JS9 (высшего качества)</div><div class="price-btn" onclick="add('JS9',45,this)">45₽</div></div>
+    <div class="weapon-item"><img src="images/p90.jpg"><div class="weapon-info">P90 (высшего качества)</div><div class="price-btn" onclick="add('P90',75,this)">75₽</div></div>
 </div>
 
 </div>
@@ -216,6 +228,7 @@ body{
 <div id="bellCount" class="bell-count">0</div>
 </div>
 
+<!-- Одобрено -->
 <div id="approved" class="approved">Одобрено</div>
 
 <script>
@@ -223,8 +236,13 @@ let total=0;
 let count=0;
 
 function toggleBox(id){
+    // Закрываем все остальные
+    document.querySelectorAll('.weapon-box').forEach(box=>{
+        if(box.id!==id) box.style.display='none';
+    });
+    // Открываем текущий
     const box=document.getElementById(id);
-    box.style.display=box.style.display==="block"?"none":"block";
+    box.style.display = (box.style.display==="block")?"none":"block";
 }
 
 function add(name,price,btn){
@@ -241,7 +259,7 @@ function add(name,price,btn){
 
     const approved=document.getElementById("approved");
     approved.style.display="block";
-    setTimeout(()=>approved.style.display="none",6000);
+    setTimeout(()=>approved.style.display="none",1200); // 1-1.2 секунды
 }
 
 function remove(btn,price){
