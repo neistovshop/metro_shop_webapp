@@ -4,75 +4,42 @@
 <meta charset="UTF-8">
 <title>НЕИСТОВ</title>
 <style>
-body {
+body, html {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
     color: white;
-
-    /* Анимированные кубики фон */
-    background: repeating-linear-gradient(
-        45deg,
-        #ffd700 0px,
-        #ffd700 20px,
-        #ffec8b 20px,
-        #ffec8b 40px
-    );
-    background-size: 200% 200%;
-    animation: moveBG 8s linear infinite;
 }
 
-@keyframes moveBG {
-    0% { background-position: 0 0; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0 0; }
-}
-
-/* Контейнер надписи и фото канала/отзывов */
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-/* Фото отзывов слева */
-.reviews-photo {
-    width: 8vw;
-    height: 8vw;
-    border: 3px solid #8b4513; /* коричневый контур */
-    border-radius: 15px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-/* Фото канала справа */
-.channel-photo {
-    width: 8vw;
-    height: 8vw;
-    border: 3px solid white;
-    border-radius: 15px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-/* Фото внутри контуров */
-.channel-photo img, .reviews-photo img {
-    width: 100%;
-    height: 100%;
+/* Видео на заднем фоне */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
     object-fit: cover;
+    z-index: -1; /* под контентом */
 }
 
-/* Надпись НЕИСТОВ */
+/* Контент поверх видео */
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок */
 h1 {
     font-size: 8vw;
-    color: #ff4747;
-    margin: 0;
-    padding: 10px 20px;
-    border: 3px solid #ff4747;
-    border-radius: 15px;
+    margin-bottom: 30px;
     text-align: center;
+    color: #ff4747;
 }
 
 /* Сетка карточек */
@@ -87,20 +54,18 @@ h1 {
 /* Карточка */
 .card {
     border-radius: 15px;
-    flex: 1 1 calc(33.33% - 20px); 
+    flex: 1 1 calc(33.33% - 20px); /* 3 в ряд на ПК */
     max-width: 220px;
     min-width: 140px;
     text-align: center;
     padding: 15px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.5); /* полупрозрачный фон, чтобы текст был виден на видео */
 }
 
 .card img {
     width: 100%;
-    height: 140px; /* одинаковая высота для всех фото */
-    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 6px;
 }
@@ -111,15 +76,15 @@ h1 {
     word-wrap: break-word;
 }
 
-/* Цвета карточек */
-.card.weapon { background: #8a2be2; }           
-.card.armor { background: #ff0000; }            
-.card.armor_accessories { background: #8a2be2; } 
-.card.legendary_items { background: #ff8c00; }   
-.card.extra_accessories { background: #8b0000; } 
-.card.companions { background: #4b0082; }       
-.card.balance_boost { background: #ffd700; }    
-.card.warehouse { background: #696969; }        
+/* Цвета фонов карточек */
+.card.weapon { background: #8a2be2; }           /* фиолетовый */
+.card.armor { background: #ff0000; }            /* красный */
+.card.armor_accessories { background: #8a2be2; } /* фиолетовый */
+.card.legendary_items { background: #ff8c00; }   /* оранжевый */
+.card.extra_accessories { background: #8b0000; } /* тёмно-красный */
+.card.companions { background: #4b0082; }       /* индиго */
+.card.balance_boost { background: #ffd700; }    /* золотой */
+.card.warehouse { background: #696969; }        /* серый */
 
 .card:hover {
     transform: scale(1.05);
@@ -132,31 +97,22 @@ h1 {
     .card { flex: 1 1 100%; } 
     h1 { font-size: 12vw; } 
     .card span { font-size: 4vw; } 
-    .header-container {
-        flex-direction: column;
-        gap: 10px;
-    }
 }
 </style>
 </head>
 <body>
 
+<!-- Видеофон -->
+<video id="bg-video" autoplay muted loop>
+    <source src="video/background.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видеофон.
+</video>
+
 <div class="content">
-    <!-- Заголовок и фото -->
-    <div class="header-container">
-        <div class="reviews-photo">
-            <img src="images/reviews.png" alt="Отзывы канала">
-        </div>
+    <h1>НЕИСТОВ</h1>
 
-        <h1>НЕИСТОВ</h1>
-
-        <div class="channel-photo">
-            <img src="images/channel.png" alt="Фото канала">
-        </div>
-    </div>
-
-    <!-- Сетка карточек -->
     <div class="grid">
+        <!-- Карточки -->
         <div class="card weapon" onclick="window.location.href='weapon.html'">
             <img src="images/mk14.png" alt="Оружие МК14">
             <span>Оружие</span>
