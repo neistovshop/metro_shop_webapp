@@ -4,43 +4,42 @@
 <meta charset="UTF-8">
 <title>НЕИСТОВ</title>
 <style>
-body, html {
+body {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
+    padding: 20px;
     font-family: Arial, sans-serif;
     color: white;
+
+    /* Переливающийся фон с кубиками */
+    background: repeating-linear-gradient(
+        45deg,
+        #ffd700 0px,
+        #ffd700 20px,
+        #ffec8b 20px,
+        #ffec8b 40px
+    );
+    background-size: 200% 200%;
+    animation: moveBG 8s linear infinite;
 }
 
-/* Видео на заднем фоне */
-#bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    z-index: -1; /* под контентом */
+@keyframes moveBG {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0 0; }
 }
 
-/* Контент поверх видео */
-.content {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h1 {
+    text-align: center;
+    font-size: 8vw;
+    color: #ff4747;
+    margin-bottom: 30px;
 }
 
-/* Сетка карточек */
 .grid {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
-    max-width: 1200px;
 }
 
 .card {
@@ -52,7 +51,6 @@ body, html {
     padding: 15px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    background: rgba(0,0,0,0.5); /* полупрозрачный фон, чтобы текст был виден */
 }
 
 .card img {
@@ -67,53 +65,77 @@ body, html {
     word-wrap: break-word;
 }
 
+/* Цвета фонов карточек */
+.card.weapon { background: #8a2be2; }
+.card.armor { background: #1e90ff; }
+.card.armor_accessories { background: #228b22; }
+.card.legendary_items { background: #ff8c00; }
+.card.extra_accessories { background: #8b0000; }
+.card.companions { background: #4b0082; }
+.card.balance_boost { background: #ffd700; }
+.card.warehouse { background: #696969; }
+
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
-h1 {
-    font-size: 8vw;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #ff4747;
+@media (max-width: 900px) {
+    .card { flex: 1 1 calc(50% - 15px); }
 }
 
-/* Адаптив */
-@media (max-width: 900px) { .card { flex: 1 1 calc(50% - 15px); } }
-@media (max-width: 600px) { .card { flex: 1 1 100%; } h1{font-size:12vw;} .card span{font-size:4vw;} }
+@media (max-width: 600px) {
+    .card { flex: 1 1 100%; }
+    h1 { font-size: 12vw; }
+    .card span { font-size: 4vw; }
+}
 </style>
 </head>
 <body>
 
-<!-- Видеофон -->
-<video id="bg-video" autoplay muted loop>
-    <source src="video/background.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видеофон.
-</video>
+<h1>НЕИСТОВ</h1>
 
-<div class="content">
-    <h1>НЕИСТОВ</h1>
-    <div class="grid">
-        <div class="card weapon" onclick="window.location.href='weapon.html'">
-            <img src="images/mk14.png" alt="Оружие МК14">
-            <span>Оружие</span>
-        </div>
+<div class="grid">
+<div class="card weapon" onclick="window.location.href='weapon.html'">
+<img src="images/mk14.png" alt="Оружие МК14">
+<span>Оружие</span>
+</div>
 
-        <div class="card armor" onclick="window.location.href='armor.html'">
-            <img src="images/armor6.png" alt="Броня 6 уровня">
-            <span>Броня</span>
-        </div>
+<div class="card armor" onclick="window.location.href='armor.html'">
+<img src="images/armor6.png" alt="Броня 6 уровня">
+<span>Броня</span>
+</div>
 
-        <div class="card warehouse" onclick="window.location.href='warehouse.html'">
-            <img src="images/warehouse.png" alt="Склад с ящиками">
-            <span>Продажа вещей</span>
-        </div>
+<div class="card armor_accessories" onclick="window.location.href='armor_accessories.html'">
+<img src="images/arm_fabric.png" alt="Освинцованная ткань">
+<span>Аксесуары для брони</span>
+</div>
 
-        <!-- остальные карточки... -->
-    </div>
+<div class="card legendary_items" onclick="window.location.href='legendary_items.html'">
+<img src="images/ice_arbiter.png" alt="Ледяной арбитр">
+<span>Предметы сказочного качества</span>
+</div>
+
+<div class="card extra_accessories" onclick="window.location.href='extra_accessories.html'">
+<img src="images/black_letter.png" alt="Письмо с поролем">
+<span>Дополнительные аксессуары</span>
+</div>
+
+<div class="card companions" onclick="window.location.href='companions.html'">
+<img src="images/3_characters.png" alt="3 персонажа в броне">
+<span>Сопровождение</span>
+</div>
+
+<div class="card balance_boost" onclick="window.location.href='balance_boost.html'">
+<img src="images/metro_currency.png" alt="Внутриигровая валюта">
+<span>Буст баланса</span>
+</div>
+
+<div class="card warehouse" onclick="window.location.href='warehouse.html'">
+<img src="images/warehouse.png" alt="Склад с ящиками">
+<span>Продажа вещей</span>
+</div>
 </div>
 
 </body>
 </html>
-
