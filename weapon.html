@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Оружие</title>
 
 <style>
@@ -13,31 +14,31 @@ body{
     radial-gradient(circle at 20% 30%, rgba(255,0,0,0.4), transparent 60%),
     radial-gradient(circle at 80% 70%, rgba(0,0,255,0.4), transparent 60%),
     #111;
-    backdrop-filter: blur(6px);
 }
 
-/* Кнопка назад */
+/* Большая кнопка назад */
 .back{
     position:fixed;
-    top:20px;
-    left:20px;
-    font-size:20px;
+    top:15px;
+    left:15px;
+    font-size:26px;
+    font-weight:bold;
     cursor:pointer;
     z-index:1000;
 }
 
 /* Контейнер */
 .container{
-    padding:80px 20px 120px 20px;
+    padding:80px 15px 120px 15px;
 }
 
-/* Квадраты категорий */
+/* Категории */
 .category{
-    background:#888;
-    padding:30px;
-    margin-bottom:20px;
-    border-radius:15px;
-    font-size:22px;
+    background:#777;
+    padding:25px;
+    margin-bottom:15px;
+    border-radius:12px;
+    font-size:20px;
     font-weight:bold;
     text-align:center;
     cursor:pointer;
@@ -54,53 +55,44 @@ body{
     justify-content:space-between;
     align-items:center;
     background:#222;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:8px;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:6px;
+    font-size:14px;
 }
 
 .price-btn{
     background:gold;
     color:black;
-    padding:6px 12px;
+    padding:5px 10px;
     border-radius:6px;
     cursor:pointer;
-    font-weight:bold;
+    transition:0.2s;
 }
 
-/* Корзина кнопка */
+.price-btn:active{
+    transform:scale(0.9);
+}
+
+/* Корзина кнопка внизу */
 .cart-button{
     position:fixed;
     bottom:0;
     left:0;
     right:0;
     background:linear-gradient(145deg,#00aa00,#006600);
-    padding:18px;
+    padding:15px;
     text-align:center;
     font-weight:bold;
     cursor:pointer;
-    box-shadow:0 -5px 15px rgba(0,0,0,0.6);
 }
 
-/* Страница корзины */
-.cart-page{
-    display:none;
-    padding:100px 20px;
-}
-
-.remove{
-    background:red;
-    color:white;
-    border:none;
-    cursor:pointer;
-    margin-left:10px;
-}
-
+/* Колокольчик */
 .bell{
     position:fixed;
-    bottom:80px;
-    right:20px;
-    font-size:35px;
+    bottom:70px;
+    right:15px;
+    font-size:30px;
 }
 
 .bell-count{
@@ -110,67 +102,98 @@ body{
     background:red;
     color:white;
     border-radius:50%;
-    padding:2px 7px;
-    font-size:12px;
+    padding:2px 6px;
+    font-size:11px;
+}
+
+/* Страница корзины */
+.cart-page{
+    display:none;
+    padding:90px 15px 100px 15px;
+}
+
+.remove{
+    background:red;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+
+/* Кнопка оформить */
+.checkout{
+    background:#00cc00;
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+    border-radius:10px;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+/* Одобрено */
+.approved{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(0,255,0,0.2);
+    padding:20px 40px;
+    font-size:22px;
+    border-radius:15px;
+    display:none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="back" onclick="goBack()">Назад</div>
+<div class="back" onclick="goBack()">НАЗАД</div>
 
 <!-- СТРАНИЦА ОРУЖИЯ -->
 <div id="weaponPage" class="container">
 
-<!-- ШВ -->
 <div class="category" onclick="toggleBox('shv')">ШВ</div>
 <div id="shv" class="weapon-box">
-<div class="weapon-item">M416 (высшего качества) <div class="price-btn" onclick="add('M416',35)">35₽</div></div>
-<div class="weapon-item">SCAR-L (высшего качества) <div class="price-btn" onclick="add('SCAR-L',35)">35₽</div></div>
-<div class="weapon-item">AKM (высшего качества) <div class="price-btn" onclick="add('AKM',35)">35₽</div></div>
-<div class="weapon-item">Гроза (высшего качества) <div class="price-btn" onclick="add('Гроза',35)">35₽</div></div>
-<div class="weapon-item">AUG (высшего качества) <div class="price-btn" onclick="add('AUG',35)">35₽</div></div>
-<div class="weapon-item">M762 (высшего качества) <div class="price-btn" onclick="add('M762',35)">35₽</div></div>
+<div class="weapon-item">M416 <div class="price-btn" onclick="add('M416',35,this)">35₽</div></div>
+<div class="weapon-item">SCAR-L <div class="price-btn" onclick="add('SCAR-L',35,this)">35₽</div></div>
+<div class="weapon-item">AKM <div class="price-btn" onclick="add('AKM',35,this)">35₽</div></div>
+<div class="weapon-item">Гроза <div class="price-btn" onclick="add('Гроза',35,this)">35₽</div></div>
+<div class="weapon-item">AUG <div class="price-btn" onclick="add('AUG',35,this)">35₽</div></div>
+<div class="weapon-item">M762 <div class="price-btn" onclick="add('M762',35,this)">35₽</div></div>
 </div>
 
-<!-- СВ -->
 <div class="category" onclick="toggleBox('sv')">СВ</div>
 <div id="sv" class="weapon-box">
-<div class="weapon-item">AWM (высшего качества) <div class="price-btn" onclick="add('AWM',99.99)">99.99₽</div></div>
-<div class="weapon-item">AMR (высшего качества) <div class="price-btn" onclick="add('AMR',89.90)">89.90₽</div></div>
-<div class="weapon-item">M24 (высшего качества) <div class="price-btn" onclick="add('M24',30)">30₽</div></div>
+<div class="weapon-item">AWM <div class="price-btn" onclick="add('AWM',99.99,this)">99.99₽</div></div>
+<div class="weapon-item">AMR <div class="price-btn" onclick="add('AMR',89.90,this)">89.90₽</div></div>
+<div class="weapon-item">M24 <div class="price-btn" onclick="add('M24',30,this)">30₽</div></div>
 </div>
 
-<!-- МВ -->
 <div class="category" onclick="toggleBox('mv')">МВ</div>
 <div id="mv" class="weapon-box">
-<div class="weapon-item">Mk-14 (высшего качества) <div class="price-btn" onclick="add('Mk-14',65.90)">65.90₽</div></div>
-<div class="weapon-item">SLR (высшего качества) <div class="price-btn" onclick="add('SLR',20)">20₽</div></div>
-<div class="weapon-item">SKS (высшего качества) <div class="price-btn" onclick="add('SKS',25)">25₽</div></div>
+<div class="weapon-item">Mk-14 <div class="price-btn" onclick="add('Mk-14',65.90,this)">65.90₽</div></div>
+<div class="weapon-item">SLR <div class="price-btn" onclick="add('SLR',20,this)">20₽</div></div>
+<div class="weapon-item">SKS <div class="price-btn" onclick="add('SKS',25,this)">25₽</div></div>
 </div>
 
-<!-- ДК -->
 <div class="category" onclick="toggleBox('dk')">ДК</div>
 <div id="dk" class="weapon-box">
-<div class="weapon-item">S12K (высшего качества) <div class="price-btn" onclick="add('S12K',15)">15₽</div></div>
-<div class="weapon-item">DBS (высшего качества) <div class="price-btn" onclick="add('DBS',19.90)">19.90₽</div></div>
+<div class="weapon-item">S12K <div class="price-btn" onclick="add('S12K',15,this)">15₽</div></div>
+<div class="weapon-item">DBS <div class="price-btn" onclick="add('DBS',19.90,this)">19.90₽</div></div>
 </div>
 
-<!-- РП -->
 <div class="category" onclick="toggleBox('rp')">РП</div>
 <div id="rp" class="weapon-box">
-<div class="weapon-item">MG3 (высшего качества) <div class="price-btn" onclick="add('MG3',55)">55₽</div></div>
-<div class="weapon-item">M249 (высшего качества) <div class="price-btn" onclick="add('M249',60)">60₽</div></div>
-<div class="weapon-item">M134 (unknown quality) <div class="price-btn" onclick="add('M134',120)">120₽</div></div>
+<div class="weapon-item">MG3 <div class="price-btn" onclick="add('MG3',55,this)">55₽</div></div>
+<div class="weapon-item">M249 <div class="price-btn" onclick="add('M249',60,this)">60₽</div></div>
+<div class="weapon-item">M134 <div class="price-btn" onclick="add('M134',120,this)">120₽</div></div>
 </div>
 
-<!-- ПП -->
 <div class="category" onclick="toggleBox('pp')">ПП</div>
 <div id="pp" class="weapon-box">
-<div class="weapon-item">UZI (высшего качества) <div class="price-btn" onclick="add('UZI',19.90)">19.90₽</div></div>
-<div class="weapon-item">JS9 (высшего качества) <div class="price-btn" onclick="add('JS9',45)">45₽</div></div>
-<div class="weapon-item">P90 (высшего качества) <div class="price-btn" onclick="add('P90',75)">75₽</div></div>
+<div class="weapon-item">UZI <div class="price-btn" onclick="add('UZI',19.90,this)">19.90₽</div></div>
+<div class="weapon-item">JS9 <div class="price-btn" onclick="add('JS9',45,this)">45₽</div></div>
+<div class="weapon-item">P90 <div class="price-btn" onclick="add('P90',75,this)">75₽</div></div>
 </div>
 
 </div>
@@ -181,16 +204,19 @@ body{
 <div id="cartItems"></div>
 <hr>
 Итого: <span id="total">0</span> ₽
+<div class="checkout">Оформить заказ</div>
 </div>
 
 <!-- КНОПКА КОРЗИНЫ -->
-<div class="cart-button" onclick="openCart()">🛒 КОРЗИНА</div>
+<div id="cartButton" class="cart-button" onclick="openCart()">🛒 КОРЗИНА</div>
 
 <!-- Колокольчик -->
-<div class="bell">
+<div id="bell" class="bell">
 🔔
 <div id="bellCount" class="bell-count">0</div>
 </div>
+
+<div id="approved" class="approved">Одобрено</div>
 
 <script>
 let total=0;
@@ -201,13 +227,21 @@ function toggleBox(id){
     box.style.display=box.style.display==="block"?"none":"block";
 }
 
-function add(name,price){
+function add(name,price,btn){
+    btn.style.transform="scale(0.9)";
+    setTimeout(()=>btn.style.transform="scale(1)",150);
+
     const item=document.createElement("div");
     item.innerHTML=name+" - "+price+"₽ <button class='remove' onclick='remove(this,"+price+")'>X</button>";
     document.getElementById("cartItems").appendChild(item);
+
     total+=price;
     count++;
     update();
+
+    const approved=document.getElementById("approved");
+    approved.style.display="block";
+    setTimeout(()=>approved.style.display="none",6000);
 }
 
 function remove(btn,price){
@@ -225,12 +259,16 @@ function update(){
 function openCart(){
     document.getElementById("weaponPage").style.display="none";
     document.getElementById("cartPage").style.display="block";
+    document.getElementById("bell").style.display="none";
+    document.getElementById("cartButton").style.display="none";
 }
 
 function goBack(){
     if(document.getElementById("cartPage").style.display==="block"){
         document.getElementById("cartPage").style.display="none";
         document.getElementById("weaponPage").style.display="block";
+        document.getElementById("bell").style.display="block";
+        document.getElementById("cartButton").style.display="block";
     } else {
         window.location.href="index.html";
     }
