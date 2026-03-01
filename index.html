@@ -25,17 +25,17 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Контейнер надписи и фото канала/отзывов */
+/* Контейнер заголовка и фото на одной линии */
 .header-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;       /* вертикальное выравнивание по центру */
+    justify-content: center;   /* горизонтальное центрирование */
     gap: 30px;
     margin-bottom: 40px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;         /* фиксируем в одной линии */
 }
 
-/* Фото отзывов и канала (увеличено) */
+/* Фото отзывов и канала */
 .reviews-photo, .channel-photo {
     width: 18vw;
     height: 18vw;
@@ -70,6 +70,7 @@ h1 {
         0 0 10px #0000ff, 
         0 0 15px #1e90ff, 
         0 0 20px #00ffff;
+    flex-shrink: 0;
 }
 
 /* Сетка карточек */
@@ -81,7 +82,7 @@ h1 {
     max-width: 1200px;
 }
 
-/* Карточка увеличена */
+/* Карточка */
 .card {
     border-radius: 15px;
     flex: 1 1 calc(33.33% - 20px); 
@@ -125,14 +126,16 @@ h1 {
 }
 
 /* Адаптив */
-@media (max-width: 900px) { .card { flex: 1 1 calc(50% - 15px); } }
+@media (max-width: 900px) { 
+    .card { flex: 1 1 calc(50% - 15px); } 
+}
 @media (max-width: 600px) { 
     .card { flex: 1 1 100%; } 
-    h1 { font-size: 16vw; } 
+    h1 { font-size: 14vw; } 
     .card span { font-size: 5vw; } 
-    .header-container { flex-direction: column; gap: 15px; }
-    .reviews-photo, .channel-photo { width: 30vw; height: 30vw; }
+    .reviews-photo, .channel-photo { width: 25vw; height: 25vw; }
     .footer { font-size: 5vw; }
+    .header-container { flex-wrap: wrap; gap: 15px; justify-content: center; }
 }
 </style>
 </head>
@@ -141,14 +144,15 @@ h1 {
 <div class="content">
     <!-- Заголовок и фото -->
     <div class="header-container">
-        <!-- Фото отзывов -->
+        <!-- Фото отзывов слева -->
         <div class="reviews-photo" onclick="window.location.href='https://t.me/+z3Sq0wy_iTM5ZmJi'">
             <img src="images/reviews.png" alt="Отзывы канала">
         </div>
 
+        <!-- Надпись НЕИСТОВ -->
         <h1>НЕИСТОВ</h1>
 
-        <!-- Фото канала -->
+        <!-- Фото канала справа -->
         <div class="channel-photo" onclick="window.location.href='https://t.me/neistovgo'">
             <img src="images/channel.png" alt="Фото канала">
         </div>
