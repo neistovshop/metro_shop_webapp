@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -8,13 +8,29 @@ body {
     margin: 0;
     padding: 20px;
     font-family: Arial, sans-serif;
-    background: #121212;
     color: white;
+
+    /* Переливающийся фон с кубиками */
+    background: repeating-linear-gradient(
+        45deg,
+        #ffd700 0px,
+        #ffd700 20px,
+        #ffec8b 20px,
+        #ffec8b 40px
+    );
+    background-size: 200% 200%;
+    animation: moveBG 8s linear infinite;
+}
+
+@keyframes moveBG {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0 0; }
 }
 
 h1 {
     text-align: center;
-    font-size: 10vw;
+    font-size: 8vw;
     color: #ff4747;
     margin-bottom: 30px;
 }
@@ -28,9 +44,9 @@ h1 {
 
 .card {
     border-radius: 15px;
-    width: 30%;
-    min-width: 150px;
-    max-width: 200px;
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: 220px;
+    min-width: 140px;
     text-align: center;
     padding: 15px;
     cursor: pointer;
@@ -40,32 +56,38 @@ h1 {
 .card img {
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .card span {
-    font-size: 4vw;
+    font-size: 2.5vw;
     font-weight: bold;
+    word-wrap: break-word;
 }
 
-/* Цвета фонов для каждой карточки */
-.card.weapon { background: #8a2be2; }           /* фиолетовый */
-.card.armor { background: #1e90ff; }            /* синий */
-.card.armor_accessories { background: #228b22; } /* зелёный */
-.card.legendary_items { background: #ff8c00; }   /* оранжевый */
-.card.extra_accessories { background: #8b0000; } /* тёмно-красный */
-.card.companions { background: #4b0082; }        /* индиго */
-.card.balance_boost { background: #ffd700; }     /* золотой */
+/* Цвета фонов карточек */
+.card.weapon { background: #8a2be2; }
+.card.armor { background: #1e90ff; }
+.card.armor_accessories { background: #228b22; }
+.card.legendary_items { background: #ff8c00; }
+.card.extra_accessories { background: #8b0000; }
+.card.companions { background: #4b0082; }
+.card.balance_boost { background: #ffd700; }
+.card.warehouse { background: #696969; }
 
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
+@media (max-width: 900px) {
+    .card { flex: 1 1 calc(50% - 15px); }
+}
+
 @media (max-width: 600px) {
-    .card { width: 45%; }
-    h1 { font-size: 15vw; }
-    .card span { font-size: 5vw; }
+    .card { flex: 1 1 100%; }
+    h1 { font-size: 12vw; }
+    .card span { font-size: 4vw; }
 }
 </style>
 </head>
@@ -74,7 +96,6 @@ h1 {
 <h1>НЕИСТОВ</h1>
 
 <div class="grid">
-
 <div class="card weapon" onclick="window.location.href='weapon.html'">
 <img src="images/mk14.png" alt="Оружие МК14">
 <span>Оружие</span>
@@ -110,7 +131,12 @@ h1 {
 <span>Буст баланса</span>
 </div>
 
+<div class="card warehouse" onclick="window.location.href='warehouse.html'">
+<img src="images/warehouse.png" alt="Склад с ящиками">
+<span>Продажа вещей</span>
 </div>
+</div>
+
 </body>
 </html>
 
