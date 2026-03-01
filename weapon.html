@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(270deg, #111, #550000, #111);
+    background: linear-gradient(270deg, #111, #770000, #111);
     background-size: 400% 400%;
     animation: bg 10s infinite alternate;
     color: white;
@@ -23,71 +23,89 @@ body {
     padding: 20px;
 }
 
+/* Блок категории */
 .category {
-    background: #aa0000;
+    background: red;
+    padding: 25px;
     margin-bottom: 20px;
-    padding: 20px;
     border-radius: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
     box-shadow: 0 0 15px red;
 }
 
-.category h2 {
-    margin-top: 0;
+/* Окно оружия */
+.weapon-box {
+    display: none;
+    background: black;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
 }
 
 .weapon-item {
-    background: #111;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin: 8px 0;
 }
 
 .price-btn {
     background: gold;
     color: black;
     padding: 5px 10px;
-    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
+    border-radius: 5px;
 }
 
 .price-btn:hover {
     background: lime;
 }
 
-.active {
-    background: green !important;
-}
-
-/* Корзина */
+/* Плавающая корзина */
 .cart {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 20px;
+    right: 20px;
+    width: 250px;
     background: black;
     padding: 15px;
-    border-top: 3px solid gold;
+    border-radius: 15px;
+    border: 2px solid gold;
+    cursor: move;
 }
 
-.cart h3 {
-    margin: 0 0 10px 0;
+.cart-header {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
+.cart-items {
+    max-height: 150px;
+    overflow-y: auto;
 }
 
-.remove-btn {
+.remove {
     background: red;
     color: white;
     border: none;
     cursor: pointer;
+}
+
+/* Колокольчик */
+.bell {
+    position: fixed;
+    bottom: 300px;
+    right: 40px;
+    font-size: 35px;
+    display: none;
+    animation: moveBell 2s infinite alternate;
+}
+
+@keyframes moveBell {
+    from { transform: translateX(0); }
+    to { transform: translateX(15px); }
 }
 </style>
 </head>
@@ -96,169 +114,110 @@ body {
 
 <div class="container">
 
-<!-- ШВ -->
-<div class="category">
-<h2>ШВ</h2>
-
-<div class="weapon-item">
-<span>M416 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('M416', 35, this)">35 ₽</div>
+<div class="category" onclick="toggleBox('shv')">ШВ</div>
+<div id="shv" class="weapon-box">
+    <div class="weapon-item">M416 <div class="price-btn" onclick="add('M416',35)">35₽</div></div>
+    <div class="weapon-item">SCAR-L <div class="price-btn" onclick="add('SCAR-L',35)">35₽</div></div>
+    <div class="weapon-item">AKM <div class="price-btn" onclick="add('AKM',35)">35₽</div></div>
+    <div class="weapon-item">Гроза <div class="price-btn" onclick="add('Гроза',35)">35₽</div></div>
+    <div class="weapon-item">AUG <div class="price-btn" onclick="add('AUG',35)">35₽</div></div>
+    <div class="weapon-item">M762 <div class="price-btn" onclick="add('M762',35)">35₽</div></div>
 </div>
 
-<div class="weapon-item">
-<span>SCAR-L (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('SCAR-L', 35, this)">35 ₽</div>
+<div class="category" onclick="toggleBox('sv')">СВ</div>
+<div id="sv" class="weapon-box">
+    <div class="weapon-item">AWM <div class="price-btn" onclick="add('AWM',99.99)">99.99₽</div></div>
+    <div class="weapon-item">AMR <div class="price-btn" onclick="add('AMR',89.90)">89.90₽</div></div>
+    <div class="weapon-item">M24 <div class="price-btn" onclick="add('M24',30)">30₽</div></div>
 </div>
 
-<div class="weapon-item">
-<span>AKM (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('AKM', 35, this)">35 ₽</div>
+<div class="category" onclick="toggleBox('mv')">МВ</div>
+<div id="mv" class="weapon-box">
+    <div class="weapon-item">Mk14 <div class="price-btn" onclick="add('Mk14',65.90)">65.90₽</div></div>
+    <div class="weapon-item">SLR <div class="price-btn" onclick="add('SLR',20)">20₽</div></div>
+    <div class="weapon-item">SKS <div class="price-btn" onclick="add('SKS',25)">25₽</div></div>
 </div>
 
-<div class="weapon-item">
-<span>Гроза (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('Гроза', 35, this)">35 ₽</div>
+<div class="category" onclick="toggleBox('dk')">ДК</div>
+<div id="dk" class="weapon-box">
+    <div class="weapon-item">S12K <div class="price-btn" onclick="add('S12K',15)">15₽</div></div>
+    <div class="weapon-item">DBS <div class="price-btn" onclick="add('DBS',19.90)">19.90₽</div></div>
 </div>
 
-<div class="weapon-item">
-<span>AUG (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('AUG', 35, this)">35 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>M762 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('M762', 35, this)">35 ₽</div>
-</div>
-</div>
-
-<!-- СВ -->
-<div class="category">
-<h2>СВ</h2>
-
-<div class="weapon-item">
-<span>AWM (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('AWM', 99.99, this)">99.99 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>AMR (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('AMR', 89.90, this)">89.90 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>M24 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('M24', 30, this)">30 ₽</div>
-</div>
-</div>
-
-<!-- МВ -->
-<div class="category">
-<h2>МВ</h2>
-
-<div class="weapon-item">
-<span>Mk14 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('Mk14', 65.90, this)">65.90 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>SLR (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('SLR', 20, this)">20 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>SKS (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('SKS', 25, this)">25 ₽</div>
-</div>
-</div>
-
-<!-- ДК -->
-<div class="category">
-<h2>ДК</h2>
-
-<div class="weapon-item">
-<span>S12K (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('S12K', 15, this)">15 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>DBS (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('DBS', 19.90, this)">19.90 ₽</div>
-</div>
-</div>
-
-<!-- РП -->
-<div class="category">
-<h2>РП</h2>
-
-<div class="weapon-item">
-<span>MG3 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('MG3', 55, this)">55 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>M249 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('M249', 60, this)">60 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>M134 (unknown quality)</span>
-<div class="price-btn" onclick="addToCart('M134', 120, this)">120 ₽</div>
-</div>
-</div>
-
-<!-- ПП -->
-<div class="category">
-<h2>ПП</h2>
-
-<div class="weapon-item">
-<span>UZI (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('UZI', 19.90, this)">19.90 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>JS9 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('JS9', 45, this)">45 ₽</div>
-</div>
-
-<div class="weapon-item">
-<span>P90 (высшего качества)</span>
-<div class="price-btn" onclick="addToCart('P90', 75, this)">75 ₽</div>
-</div>
+<div class="category" onclick="toggleBox('pp')">ПП</div>
+<div id="pp" class="weapon-box">
+    <div class="weapon-item">UZI <div class="price-btn" onclick="add('UZI',19.90)">19.90₽</div></div>
+    <div class="weapon-item">JS9 <div class="price-btn" onclick="add('JS9',45)">45₽</div></div>
+    <div class="weapon-item">P90 <div class="price-btn" onclick="add('P90',75)">75₽</div></div>
 </div>
 
 </div>
 
-<!-- Корзина -->
-<div class="cart">
-<h3>🛒 Корзина</h3>
-<div id="cartItems"></div>
-<strong>Итого: <span id="total">0</span> ₽</strong>
+<div class="bell" id="bell">🔔</div>
+
+<div class="cart" id="cart">
+<div class="cart-header">🛒 Корзина</div>
+<div class="cart-items" id="cartItems"></div>
+<div>Итого: <span id="total">0</span> ₽</div>
 </div>
 
 <script>
 let total = 0;
 
-function addToCart(name, price, button) {
-    button.classList.add("active");
+function toggleBox(id){
+    const box = document.getElementById(id);
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
 
+function add(name, price){
     const cart = document.getElementById("cartItems");
     const item = document.createElement("div");
-    item.className = "cart-item";
-    item.innerHTML = `
-        <span>${name} - ${price} ₽</span>
-        <button class="remove-btn" onclick="removeItem(this, ${price})">X</button>
-    `;
+    item.innerHTML = name + " - " + price + "₽ <button class='remove' onclick='remove(this,"+price+")'>X</button>";
     cart.appendChild(item);
 
     total += price;
     document.getElementById("total").innerText = total.toFixed(2);
+
+    showBell();
 }
 
-function removeItem(btn, price) {
+function remove(btn, price){
     btn.parentElement.remove();
     total -= price;
     document.getElementById("total").innerText = total.toFixed(2);
 }
+
+function showBell(){
+    const bell = document.getElementById("bell");
+    bell.style.display = "block";
+}
+
+setInterval(() => {
+    const bell = document.getElementById("bell");
+    if(bell.style.display === "block"){
+        bell.style.transform = "translateX(20px)";
+        setTimeout(()=> bell.style.transform="translateX(0)",500);
+    }
+},30000);
+
+/* Перетаскивание корзины */
+const cart = document.getElementById("cart");
+let isDragging = false, offsetX, offsetY;
+
+cart.addEventListener("mousedown", (e)=>{
+    isDragging = true;
+    offsetX = e.clientX - cart.offsetLeft;
+    offsetY = e.clientY - cart.offsetTop;
+});
+
+document.addEventListener("mousemove", (e)=>{
+    if(isDragging){
+        cart.style.left = e.clientX - offsetX + "px";
+        cart.style.top = e.clientY - offsetY + "px";
+    }
+});
+
+document.addEventListener("mouseup", ()=> isDragging=false);
 </script>
 
 </body>
