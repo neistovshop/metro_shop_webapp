@@ -6,10 +6,11 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
+/* Общие стили */
 body {
+    font-family: Arial, sans-serif;
     background: #121212;
     color: white;
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 15px;
 }
@@ -18,48 +19,67 @@ h1 {
     text-align: center;
     color: #ff4747;
     margin-bottom: 20px;
+    font-size: 6vw;
 }
 
+/* Контейнер магазина */
 .shop {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+/* Карточка товара */
 .item {
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 15px;
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 12px;
+    flex-wrap: wrap;
+    transition: transform 0.2s;
+}
+.item:hover {
+    transform: scale(1.03);
 }
 
+/* Изображение товара */
 .item img {
-    width: 100px;
-    height: 100px;
+    width: 25vw;
+    max-width: 120px;
+    height: auto;
     border-radius: 12px;
 }
 
+/* Информация о товаре */
 .item-info {
     flex: 1;
+    min-width: 120px;
 }
 
 .item-info span {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 4vw;
+    min-font-size: 16px;
 }
 
+/* Кнопка добавить */
 .item button {
     background: #ff4747;
     border: none;
-    padding: 12px 20px;
+    padding: 4vw 5vw;
     color: white;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 4vw;
+    min-font-size: 14px;
+    transition: background 0.2s;
+}
+.item button:hover {
+    background: #ff1f1f;
 }
 
+/* Корзина */
 .cart {
     margin-top: 25px;
     padding: 15px;
@@ -69,19 +89,38 @@ h1 {
 
 .total {
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 5vw;
+    min-font-size: 16px;
 }
 
 .checkout {
     margin-top: 10px;
     width: 100%;
-    padding: 12px;
+    padding: 4vw;
     background: #00c853;
     border: none;
     color: white;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 5vw;
+    min-font-size: 16px;
     cursor: pointer;
+    transition: background 0.2s;
+}
+.checkout:hover {
+    background: #009624;
+}
+
+/* Адаптив для маленьких экранов */
+@media (max-width: 500px) {
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item button {
+        width: 100%;
+        text-align: center;
+    }
 }
 </style>
 </head>
@@ -152,6 +191,7 @@ function checkout() {
     orderText += "\nИтого: " + total + "₽";
 
     tg.sendData(orderText);
+    alert("✅ Заказ отправлен!");
 }
 </script>
 
