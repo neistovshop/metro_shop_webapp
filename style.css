@@ -1,35 +1,23 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #121212;
-    color: white;
-    padding: 10px;
     margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    /* Переливающийся фон с кубиками */
+    background: repeating-linear-gradient(
+        45deg,
+        #ffd700 0px,
+        #ffd700 20px,
+        #ffec8b 20px,
+        #ffec8b 40px
+    );
+    background-size: 200% 200%;
+    animation: moveBG 8s linear infinite;
 }
 
-.item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #1e1e1e;
-    border-radius: 12px;
-    padding: 10px;
-    flex-wrap: wrap; /* карточка будет переносить элементы на новую строку */
-}
-
-.item img {
-    width: 20vw; /* 20% от ширины экрана */
-    max-width: 100px; /* но не больше 100px на больших экранах */
-    height: auto;
-    border-radius: 12px;
-}
-
-.item-info span {
-    font-size: 4vw; /* размер шрифта зависит от ширины экрана */
-    min-font-size: 16px; /* минимальный размер */
-}
-
-.item button {
-    padding: 3vw 4vw; /* кнопки растут под экран */
-    font-size: 4vw;
-    min-font-size: 14px;
+@keyframes moveBG {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0 0; }
 }
